@@ -1,13 +1,47 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{
+  box-sizing: border-box;   
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root{
+  --primary: #3c6dad;
+  --light: #fff;
+  --font-dark: rgb(31, 31, 31);
+  --font-light: #f5f5f5;
+  --cell-border: #c9c9c9;
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+  margin: 0;
+  padding: 5px;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--font-dark);
+}
+
+p, h1, h2, h3, h4, h5, a, li, button, input, span, select, label, tr, td{
+  letter-spacing: 2px;
+}
+  
+table {border-collapse: collapse;
+  border: 2px solid var(--font-dark);
+  min-width: 80vw;
+
+}
+  
+th {
+  background-color: var(--font-light);
+  padding: 10px;
+  border-bottom: 1px solid var(--cell-border);
+  border-left: 1px solid var(--cell-border);
+}
+  
+td {
+  padding: 10px;
+  text-align: center;
+  border-left: 1px solid var(--cell-border);
+  border-bottom: 1px solid var(--cell-border);
 }

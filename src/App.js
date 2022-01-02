@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import Table from './components/table'
+import { useEffect, useState } from 'react';
+import {getProjects} from './libs/api';
 
 function App() {
+  const [projects, setProjects] = useState([{name: '',date: ''}]);
+  const colNames = ["Nombre", "Apellido"]
+
+  useEffect(async () => {
+    const projects = await getProjects();
+    console.log(projects);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Titulo</h1>
+      <Table items={projects} colNames={colNames} />
     </div>
   );
 }
