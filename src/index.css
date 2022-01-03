@@ -1,5 +1,10 @@
 *{
-  box-sizing: border-box;   
+  box-sizing: border-box; 
+}
+
+body{
+  font-family: 'Montserrat', sans-serif;
+  color: var(--font-dark);
 }
 
 :root{
@@ -10,26 +15,34 @@
   --cell-border: #c9c9c9;
 }
 
-.App {
-  text-align: center;
+.App { 
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   justify-content: center;
   align-items: center;  
-  margin: 0;
   padding: 5px;
-  font-family: 'Montserrat', sans-serif;
-  color: var(--font-dark);
+}
+
+.App > h1{
+  
+  color: var(--primary);
 }
 
 p, h1, h2, h3, h4, h5, a, li, button, input, span, select, label, tr, td{
   letter-spacing: 2px;
+  color: var(--font-dark)
 }
   
-table {border-collapse: collapse;
-  border: 2px solid var(--font-dark);
-  min-width: 80vw;
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 80vw;
+}
 
+.table-wrapper{
+  overflow-y: scroll;
+  height: 70vh;
+  border: 1px solid var(--font-dark);
 }
   
 th {
@@ -37,11 +50,20 @@ th {
   padding: 10px;
   border-bottom: 1px solid var(--cell-border);
   border-left: 1px solid var(--cell-border);
+  color: var(--primary);
 }
   
 td {
+  transition: all 0.5s ease-out;
   padding: 10px;
   text-align: center;
   border-left: 1px solid var(--cell-border);
   border-bottom: 1px solid var(--cell-border);
+}
+
+
+tr:hover > td{
+  background-color: var(--primary);
+  color: var(--font-light);
+  cursor: pointer;
 }
