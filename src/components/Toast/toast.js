@@ -1,12 +1,14 @@
-import './styles/toast.css'
+import '../../styles/toast.css'
 
 export const Toast = ({show, closeToast, item}) => {
     return (
         <div className='toast-wrapper' style={{display: (show == true) ? 'flex' : 'none'}}>
             <div className="toast" >
-                <span className='close' onClick={closeToast}>X</span>
+                <div className='close-wrapper'>
+                    <i className="far fa-times-circle" onClick={closeToast}></i>
+                </div>
                 <h3>{item.projectName}</h3>
-                <p className="description">{item.description}</p>
+                {item.description ? <p className="description">{item.description}</p> : ''}
                 <p><strong>Año de inicio: </strong>{item.startYear}</p>
                 <p><strong>Año de finalización: </strong>{item.endYear}</p>
                 <p><strong>Monto total: </strong>{item.totalAmount} ({item.currencyType})</p>

@@ -1,4 +1,4 @@
-@import '../../index.css';
+@import './index.css';
 
 .toast{
     border-radius: 5px;
@@ -34,21 +34,24 @@ a:hover {
     font-weight: bold;
 }
 
-.close{
-    top: 0;
-    right: 0;
-    margin: 10px;
-    position: absolute;
-    background-color: none;
-    font-weight: bold;
-    border-radius: 5px;
+.close-wrapper > i{
     color: var(--font-dark);
-    transition: all 0.5s ease-out;
+    font-size: 1.2rem;
+
+    position: fixed;
+    
+    transition: all 0.2s ease-out;
 }
 
-.close:hover{
+.close-wrapper > i:hover{
     cursor: pointer;
-    color: var(--primary);
+    color: firebrick;
+    transform: scale(1.2);
+}
+
+.close-wrapper{
+    text-align: end;
+    margin-right: 15px;
 }
 
 .toast-wrapper{
@@ -64,7 +67,12 @@ a:hover {
 }
 
 .description{
-    overflow-y: auto;
+    background-color: var(--font-light);
     max-height: 20vh;
+    padding: 10px;
+    border-radius: 10px;
     margin-bottom: 30px;
+
+    line-height: 1.5rem ;
+    overflow-y: auto;
 }
