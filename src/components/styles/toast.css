@@ -2,16 +2,20 @@
 
 .toast{
     border-radius: 5px;
-    padding: 10px;
+    padding: 15px;
     z-index: 100;
     
     width: 70vw;
     height: auto;
+    
 
     position: absolute;
-    top: 30%;
+    top: 20%;
+    bottom: 20%;
 
     background-color: var(--light);
+
+    overflow-y: auto;
 }
 
 .toast > h3, strong{
@@ -57,4 +61,10 @@ a:hover {
 
     align-content: center;
     justify-content: center;
+}
+
+.description{
+    overflow-y: auto;
+    max-height: 20vh;
+    margin-bottom: 30px;
 }

@@ -6,9 +6,10 @@ export const Toast = ({show, closeToast, item}) => {
             <div className="toast" >
                 <span className='close' onClick={closeToast}>X</span>
                 <h3>{item.projectName}</h3>
-                <p>{item.description}</p>
+                <p className="description">{item.description}</p>
                 <p><strong>Año de inicio: </strong>{item.startYear}</p>
                 <p><strong>Año de finalización: </strong>{item.endYear}</p>
+                <p><strong>Monto total: </strong>{item.totalAmount} ({item.currencyType})</p>
                 <p><strong>Duración: </strong>{item.duration} días</p>
                 <p><strong>Estado de la obra: </strong>{item.status}</p>
                 <p><strong>Más información: </strong><a href={item.projectUrl} target='blank'>Sitio oficial del Gobierno de la Nación</a></p>
