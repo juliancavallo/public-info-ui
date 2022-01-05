@@ -10,7 +10,7 @@ export const Table = ({items, columns, showToastInfo, toast}) => {
                 <tbody>
                     {
                         items.map((item, index) => (
-                            <TableRow key={index} item={item} showToastInfo={showToastInfo} />
+                            <TableRow key={index} cells={item.header} showToastInfo={showToastInfo} toastItem={item}/>
                         ))
                     }            
                 </tbody>

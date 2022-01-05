@@ -3,6 +3,7 @@ import {Toast} from './components/Toast/toast';
 import { useEffect, useState } from 'react';
 import Animation from './common/loading.gif';
 import {getProjects} from './libs/api';
+import {ProjectToastContent} from './components/Project/toastContent';
 
 function App() {
   const [projects, setProjects] = useState([]);
@@ -33,14 +34,15 @@ function App() {
     setShow(false);
   }
 
+  const ToastContent = <ProjectToastContent item={selectedItem}/>;
+
   return (
     <div className="App">
       <h1>Obras Públicas</h1>
       {loading ? <img src={Animation}></img> : 
         <Table items={projects} columns={columns} showToastInfo={showToastInfo} toast={     
-          <Toast show={show} closeToast={closeToast} item={selectedItem}></Toast>
-        }>
-        </Table>
+          <Toast show={show} closeToast={closeToast} title={selectedItem?.header?.projectName} content={ToastContent}/>
+        }/>
       }
 
     </div>

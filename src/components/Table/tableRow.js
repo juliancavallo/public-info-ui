@@ -1,10 +1,9 @@
-export const TableRow = ({index, item, showToastInfo}) => {
+export const TableRow = ({cells, toastItem, showToastInfo}) => {
     return (
-        <tr onClick={() => showToastInfo(item)}>
-            <td>{item.projectName}</td>
-            <td>{item.totalAmount}</td>
-            <td>{item.province}</td>
-            <td>{item.deparment}</td>
+        <tr onClick={() => showToastInfo(toastItem)}>
+            {Object.entries(cells).map((prop, i) => (
+                <td key={i}>{prop[1]}</td>
+            ))}
         </tr>
     );
 }
