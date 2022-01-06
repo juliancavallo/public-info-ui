@@ -1,0 +1,17 @@
+.home-button{
+    position: fixed;
+    top: 15px;
+    left: 15px;
+}
+
+.home-button > i{
+    color: var(--font-dark);
+    font-size: 1.2rem;    
+    transition: all 0.2s ease-out;
+}
+
+.home-button:hover > i{
+    cursor: pointer;
+    color: var(--primary);
+    transform: scale(1.2);
+}

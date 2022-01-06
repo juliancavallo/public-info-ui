@@ -1,6 +1,7 @@
 import React from "react";
 import { TableHeader } from "./tableHeader";
 import { TableRow } from "./tableRow";
+import './table.css';
 
 export const Table = ({items, columns, showToastInfo, toast}) => {
     return (
@@ -10,7 +11,7 @@ export const Table = ({items, columns, showToastInfo, toast}) => {
                 <tbody>
                     {
                         items.map((item, index) => (
-                            <TableRow key={index} cells={item.header} showToastInfo={showToastInfo} toastItem={item}/>
+                            <TableRow key={index} item={item.header} showToastInfo={showToastInfo} toastItem={item}/>
                         ))
                     }            
                 </tbody>
