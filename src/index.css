@@ -2,8 +2,9 @@
   box-sizing: border-box; 
 }
 
-body{
-  font-family: 'Montserrat', sans-serif;
+body, input, button, select{
+  font-family:  'Montserrat', sans-serif;
+  letter-spacing: 2px;
 }
 
 ::-webkit-scrollbar {
@@ -43,7 +44,6 @@ main > h1{
 }
 
 p, h1, h2, h3, h4, h5, a, li, button, input, span, select, label, tr, td{
-  letter-spacing: 2px;
   color: var(--font-dark);
 }
 
@@ -103,4 +103,57 @@ a:hover {
 
 .page > img{
   width: 50%;
+}
+
+.filter-box{
+  margin: 35px;
+
+  width: 80vw;
+
+  border: 1px var(--cell-border) solid;
+  border-radius: 15px;
+  
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container{
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter{
+  margin:15px;
+
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+}
+
+input, .filter-box > button{
+  font-weight: bold;
+
+  padding: 8px;
+  margin-top: 15px;
+  
+  height: 40px;    
+  
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid var(--cell-border);
+
+  transition: all 0.2s ease-out;
+}
+
+.filter-box > button{
+  width: 20%;
+  margin:15px;
+}
+
+.filter-box > button:hover{
+  background-color: var(--primary);
+  color: var(--font-light);
+  cursor: pointer;
 }
