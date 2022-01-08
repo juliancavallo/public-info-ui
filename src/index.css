@@ -124,7 +124,7 @@ a:hover {
 }
 
 .filter{
-  margin:15px;
+  margin:10px 20px;
 
   flex-grow: 1;
 
@@ -132,11 +132,11 @@ a:hover {
   flex-direction: column;
 }
 
-input, .filter-box > button{
+.filter > input, .filter-box > button{
   font-weight: bold;
 
   padding: 8px;
-  margin-top: 15px;
+  margin-top: 5px;
   
   height: 40px;    
   
@@ -148,8 +148,7 @@ input, .filter-box > button{
 }
 
 .filter-box > button{
-  width: 20%;
-  margin:15px;
+  margin:20px;
 }
 
 .filter-box > button:hover{

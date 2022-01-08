@@ -9,6 +9,13 @@ import {HomeButton} from '../components/HomeButton/homeButton'
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
+  const [show, setShow] = useState(false);
+  const [selectedItem, setSelectedItem] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [size, setSize] = useState(10);
+  const [page, setPage] = useState(1);
+  const [pagedDataChanged, setPagedDataChanged] = useState(false);
+
   const columns = [
     {value: "Proyecto", width: '40%'}, 
     {value: "Monto total", width: '20%'}, 
@@ -30,40 +37,62 @@ export default function Projects() {
     'minMount': minMountInput, 
     'maxMount': maxMountInput
   };
-
+  
   useEffect(async () => {
-    setLoading(true);
-    const projects = await getProjects(null);
-    setLoading(false);
-    setProjects(projects);
+    const filters = {'size': size}
+    loadProjects(filters);
   }, []);
 
-  const [show, setShow] = useState(false);
-  const [selectedItem, setSelectedItem] = useState({});
-  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    if(pagedDataChanged){
+      loadProjects(getFilters());
+      setPagedDataChanged(false);
+    }
+  }, [pagedDataChanged]);
 
-  const showToastInfo = (item) => {
-    setShow(true);
-    setSelectedItem(item);
-  }
 
-  const closeToast = () => {
-    setShow(false);
-  }
-
-  const onSearchClick = async () => {
+  const getFilters = () => { 
     const filters = {...refs};
 
     Object.keys(filters).map(function(key, index) {
       filters[key] = filters[key].current.value
     });
 
-    setLoading(true);
-    const projects = await getProjects(filters);
-    setLoading(false);
-    setProjects(projects);
+    filters.size = size;
+    filters.page = page;
+
+    return filters;
   }
 
+  const loadProjects = async (filters) => {
+    setLoading(true);
+    const response = await getProjects(filters);
+    setLoading(false);
+
+    setProjects(response.items);
+  }
+
+  const showToastInfo = (item) => {
+    document.querySelector('body').style['overflow'] = 'hidden';
+    setShow(true);
+    setSelectedItem(item);
+  }
+
+  const closeToast = () => {
+    document.querySelector('body').style['overflow'] = '';
+    setShow(false);
+  }
+
+  const onSearchClick = async () => {
+    loadProjects(getFilters());
+  }
+
+  const onPagedDataChange = (_size, _page) => {
+    setSize(_size);
+    setPage(_page);
+    setPagedDataChanged(true);
+  }
+  
   const ToastContent = <ProjectToastContent project={selectedItem}/>;
 
   return (
@@ -71,10 +100,21 @@ export default function Projects() {
       <h1>Obras Públicas</h1>
       <HomeButton/>
       <SearchFilters refs={refs} onSearchClick={onSearchClick} />
-      {loading ? <img src={Animation}></img> : 
-        <Table items={projects} columns={columns} showToastInfo={showToastInfo} toast={     
-          <Toast show={show} closeToast={closeToast} title={selectedItem?.header?.projectName} content={ToastContent}/>
-        }/>
+      {loading ? <img src={Animation} alt="Animation gif"></img> : 
+        <Table 
+          items={projects} 
+          columns={columns} 
+          showToastInfo={showToastInfo} 
+          size={size} 
+          page={page}
+          onPagedDataChange={onPagedDataChange}
+          toast={
+            <Toast 
+              show={show} 
+              closeToast={closeToast} 
+              title={selectedItem?.header?.projectName} 
+              content={ToastContent}/>}
+        />
       }
 
     </main>
