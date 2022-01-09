@@ -2,12 +2,13 @@
 table {
     border-collapse: collapse;
     table-layout: fixed;
-    width: 80vw;
 }
  
 .table-wrapper{
-  overflow-y: auto;
+  overflow-y: auto;    
+  overflow-x: hidden;
   height: 70vh;
+  width: 80vw;
   border: 1px solid var(--font-dark);
 }
 
@@ -62,5 +63,9 @@ tr:hover > td {
 
   th:first-child{
     width: 100% !important;
+  }
+  
+  td:not(:first-child){
+    display: none;
   }
 }

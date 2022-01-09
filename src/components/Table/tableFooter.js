@@ -22,6 +22,7 @@ export const TableFooter = ({ size, page, onPagedDataChange }) => {
             <select name="sizeSelect" onChange={e => onSelectChange(e)} defaultValue={size}>
                 <option>10</option>
                 <option>20</option>
+                <option>50</option>
             </select>
 
             <button onClick={() => changePageValue(1)}>{'<<'}</button>
