@@ -8,6 +8,7 @@ import {ProjectToastContent} from '../components/Project/toastContent';
 import {HomeButton} from '../components/HomeButton/homeButton'
 
 export default function Projects() {
+  const [totalPages, setTotalPages] = useState(0);
   const [projects, setProjects] = useState([]);
   const [show, setShow] = useState(false);
   const [selectedItem, setSelectedItem] = useState({});
@@ -27,15 +28,15 @@ export default function Projects() {
   let departmentInput = React.createRef();
   let fromDateInput = React.createRef();
   let toDateInput = React.createRef();
-  let minMountInput = React.createRef();
-  let maxMountInput = React.createRef();
+  let totalAmountMinInput = React.createRef();
+  let totalAmountMaxInput = React.createRef();
   const refs = {
     'province': provinceInput, 
     'department': departmentInput, 
     'fromDate': fromDateInput, 
     'toDate': toDateInput, 
-    'minMount': minMountInput, 
-    'maxMount': maxMountInput
+    'totalAmountMin': totalAmountMinInput, 
+    'totalAmountMax': totalAmountMaxInput
   };
   
   useEffect(async () => {
@@ -70,6 +71,9 @@ export default function Projects() {
     setLoading(false);
 
     setProjects(response.items);
+    setTotalPages(response.pages)
+
+    document.querySelector('body').scrollIntoView({block: 'end', behavior: 'smooth'});
   }
 
   const showToastInfo = (item) => {
@@ -107,6 +111,7 @@ export default function Projects() {
           showToastInfo={showToastInfo} 
           size={size} 
           page={page}
+          totalPages={totalPages}
           onPagedDataChange={onPagedDataChange}
           toast={
             <Toast 

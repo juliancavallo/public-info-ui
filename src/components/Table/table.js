@@ -4,7 +4,7 @@ import { TableRow } from "./tableRow";
 import './table.css';
 import { TableFooter } from "./tableFooter";
 
-export const Table = ({items, columns, showToastInfo, toast, size, page, onPagedDataChange}) => {
+export const Table = ({items, columns, showToastInfo, toast, size, page, totalPages, onPagedDataChange}) => {
     return (
         <div className="table-wrapper">
             <table>
@@ -17,7 +17,7 @@ export const Table = ({items, columns, showToastInfo, toast, size, page, onPaged
                     }            
                 </tbody>
             </table>
-            <TableFooter size={size} page={page} onPagedDataChange={onPagedDataChange} ></TableFooter>
+            <TableFooter size={size} page={page} totalPages={totalPages} onPagedDataChange={onPagedDataChange} ></TableFooter>
             <React.Fragment>
                 {toast}
             </React.Fragment>

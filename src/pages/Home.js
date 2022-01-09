@@ -6,12 +6,12 @@ import WagesThumbnail from '../common/images/salary.png';
 export default function Home() {
   return (
     <main>
-      <h1>Información Pública</h1>
+      <h1>Datos públicos del Gobierno de la República Argentina.</h1>
       <br />
 
       <div className="main-container">
           <Link to="/public-info-ui/projects" className="page">
-            <h3>Proyectos</h3>
+            <h3>Obras Públicas</h3>
             <img src={ProjectThumbnail} alt="Obras públicas"></img>
           </Link>
           <Link to="/salary" className="page">

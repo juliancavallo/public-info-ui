@@ -23,13 +23,13 @@ export const SearchFilters = ({onSearchClick, refs}) => {
                 </div>
 
                 <div className="filter">
-                    <label htmlFor="minMount">Monto mínimo:</label>
-                    <input ref={refs.minMount} type="number" id="minMount" name="minMount"></input>
+                    <label htmlFor="totalAmountMin">Monto mínimo:</label>
+                    <input ref={refs.totalAmountMin} type="number" id="totalAmountMin" name="totalAmountMin"></input>
                 </div>
 
                 <div className="filter">
-                    <label htmlFor="maxMount">Monto máximo:</label>
-                    <input ref={refs.maxMount} type="number" id="maxMount" name="maxMount"></input>
+                    <label htmlFor="totalAmountMax">Monto máximo:</label>
+                    <input ref={refs.totalAmountMax} type="number" id="totalAmountMax" name="totalAmountMax"></input>
                 </div>
             </div>
             <button onClick={onSearchClick}>Buscar</button>

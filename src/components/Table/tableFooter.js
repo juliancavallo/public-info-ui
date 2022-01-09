@@ -1,7 +1,7 @@
 import React from "react";
 import './table.css';
 
-export const TableFooter = ({ size, page, onPagedDataChange }) => {
+export const TableFooter = ({ size, page, totalPages, onPagedDataChange }) => {
     const onSelectChange = (e) => {
         onPagedDataChange(e.currentTarget.value, page)
     }
@@ -25,11 +25,11 @@ export const TableFooter = ({ size, page, onPagedDataChange }) => {
                 <option>50</option>
             </select>
 
-            <button onClick={() => changePageValue(1)}>{'<<'}</button>
-            <button onClick={() => changePageValue(--page)}>{'<'}</button>
+            <button className="page-button" onClick={() => changePageValue(1)}>{'<<'}</button>
+            <button className="page-button" onClick={() => changePageValue(--page)}>{'<'}</button>
             <input aria-label="titulo" id='pageCounter' type={'text'} defaultValue={page}  onKeyUp={e => onPageChange(e)}></input>
-            <button onClick={() => changePageValue(++page)}>{'>'}</button>
-            <button>{'>>'}</button>
+            <button className="page-button" onClick={() => changePageValue(++page)}>{'>'}</button>
+            <button className="page-button" onClick={() => changePageValue(totalPages) }>{'>>'}</button>
         </div>
         );
   };
