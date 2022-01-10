@@ -5,11 +5,16 @@ table {
 }
  
 .table-wrapper{
+  margin: 20px 0px;
   overflow-y: auto;    
   overflow-x: hidden;
+  min-height: 70vh;
   max-height: 70vh;
   width: 80vw;
   border: 1px solid var(--font-dark);
+
+  display: flex;
+  flex-direction: column;
 }
 
 thead{

@@ -2,10 +2,13 @@ import React, {useEffect, useState } from 'react';
 import {Table} from '../components/Table/table'
 import {Toast} from '../components/Toast/toast';
 import {SearchFilters} from '../components/Project/searchFilters';
-import Animation from '../common/images/loading.gif';
+import {LoadingAnimation} from '../components/Animation/loading';
 import {getProjects} from '../libs/api';
 import {ProjectToastContent} from '../components/Project/toastContent';
 import {HomeButton} from '../components/HomeButton/homeButton'
+import {TableFooter} from '../components/Table/tableFooter'
+import {TableHeader} from '../components/Table/tableHeader'
+
 
 export default function Projects() {
   const [totalPages, setTotalPages] = useState(0);
@@ -30,13 +33,15 @@ export default function Projects() {
   let toDateInput = React.createRef();
   let totalAmountMinInput = React.createRef();
   let totalAmountMaxInput = React.createRef();
+  let descriptionInput = React.createRef();
   const refs = {
     'province': provinceInput, 
     'department': departmentInput, 
     'fromDate': fromDateInput, 
     'toDate': toDateInput, 
     'totalAmountMin': totalAmountMinInput, 
-    'totalAmountMax': totalAmountMaxInput
+    'totalAmountMax': totalAmountMaxInput,
+    'description': descriptionInput
   };
   
   useEffect(async () => {
@@ -60,7 +65,7 @@ export default function Projects() {
     });
 
     filters.size = size;
-    filters.page = page;
+    filters.page = page - 1;
 
     return filters;
   }
@@ -104,23 +109,25 @@ export default function Projects() {
       <h1>Obras Públicas</h1>
       <HomeButton/>
       <SearchFilters refs={refs} onSearchClick={onSearchClick} />
-      {loading ? <img src={Animation} alt="Animation gif"></img> : 
-        <Table 
-          items={projects} 
-          columns={columns} 
-          showToastInfo={showToastInfo} 
-          size={size} 
-          page={page}
-          totalPages={totalPages}
-          onPagedDataChange={onPagedDataChange}
-          toast={
-            <Toast 
-              show={show} 
-              closeToast={closeToast} 
-              title={selectedItem?.header?.projectName} 
-              content={ToastContent}/>}
-        />
-      }
+      
+      {loading ? <LoadingAnimation width={'50px'}/> : ''}
+      <div className='table-wrapper'>
+        <table>
+          <TableHeader columns={columns}/>
+          <Table 
+            items={projects} 
+            showToastInfo={showToastInfo} 
+            toast={
+              <Toast 
+                show={show} 
+                closeToast={closeToast} 
+                title={selectedItem?.header?.projectName} 
+                content={ToastContent}/>}
+            />
+        </table>
+
+        <TableFooter size={size} page={page} totalPages={totalPages} onPagedDataChange={onPagedDataChange} ></TableFooter>
+      </div>
 
     </main>
   );

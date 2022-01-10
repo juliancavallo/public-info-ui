@@ -1,0 +1,56 @@
+
+.filter-box{
+    margin: 35px;
+  
+    width: 80vw;
+  
+    border: 1px var(--cell-border) solid;
+    border-radius: 15px;
+    
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-container{
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .filter{
+    margin:10px 20px;
+  
+    flex-grow: 1;
+  
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .filter > input, .filter-box > button{
+    font-weight: bold;
+  
+    padding: 8px;
+    margin-top: 5px;
+    
+    height: 40px;    
+    
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid var(--cell-border);
+  
+    transition: all 0.2s ease-out;
+  }
+  
+  .filter-box > button{
+    margin:20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .filter-box > button:hover{
+    background-color: var(--primary);
+    color: var(--font-light);
+    cursor: pointer;
+  }

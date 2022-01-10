@@ -1,3 +1,5 @@
+import './searchFilters.css'
+
 export const SearchFilters = ({onSearchClick, refs}) => {
     return (
         <div className="filter-box">
@@ -30,6 +32,11 @@ export const SearchFilters = ({onSearchClick, refs}) => {
                 <div className="filter">
                     <label htmlFor="totalAmountMax">Monto máximo:</label>
                     <input ref={refs.totalAmountMax} type="number" id="totalAmountMax" name="totalAmountMax"></input>
+                </div>
+
+                <div className="filter">
+                    <label htmlFor="description">Descripción:</label>
+                    <input ref={refs.description} type="text" id="description" name="description"></input>
                 </div>
             </div>
             <button onClick={onSearchClick}>Buscar</button>

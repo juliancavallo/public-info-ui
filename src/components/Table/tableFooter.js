@@ -12,8 +12,8 @@ export const TableFooter = ({ size, page, totalPages, onPagedDataChange }) => {
     }
 
     const changePageValue = (val) => {
-        page = val;
-        document.getElementById('pageCounter').value = val;
+        page = Math.max(val, 1);
+        document.getElementById('pageCounter').value = page;
         onPagedDataChange(size, page)
     }
 
