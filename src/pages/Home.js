@@ -10,7 +10,7 @@ export default function Home() {
       <br />
 
       <div className="main-container">
-          <Link to="/public-info-ui/projects" className="page">
+          <Link to="/projects" className="page">
             <h3>Obras Públicas</h3>
             <img src={ProjectThumbnail} alt="Obras públicas"></img>
           </Link>
