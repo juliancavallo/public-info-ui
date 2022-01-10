@@ -50,12 +50,14 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    backdrop-filter: blur(5px) brightness(0.7);
+
+    backdrop-filter: blur(4px) brightness(0.7);
     z-index: 99;
 
     align-content: center;
     justify-content: center;
 }
+
 
 .description{
     background-color: var(--font-light);
@@ -66,4 +68,11 @@
 
     line-height: 1.5rem ;
     overflow-y: auto;
+}
+
+
+@supports (-moz-appearance: none){
+    .toast-wrapper{
+        background-color: rgba(49, 49, 49, 0.479);
+    }
 }

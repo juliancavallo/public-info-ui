@@ -24,7 +24,6 @@ thead{
 
 th, td{
   text-overflow: ellipsis;
-  overflow-x: clip;
   border-left: 1px solid var(--cell-border);
   border-bottom: 1px solid var(--cell-border);
   padding: 10px;
