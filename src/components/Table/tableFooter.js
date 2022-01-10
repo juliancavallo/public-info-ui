@@ -19,7 +19,7 @@ export const TableFooter = ({ size, page, totalPages, onPagedDataChange }) => {
 
     return (
         <div className="table-footer">
-            <select name="sizeSelect" onChange={e => onSelectChange(e)} defaultValue={size}>
+            <select name="sizeSelect" aria-label="Size select" onChange={e => onSelectChange(e)} defaultValue={size}>
                 <option>10</option>
                 <option>20</option>
                 <option>50</option>

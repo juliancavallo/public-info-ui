@@ -4,7 +4,7 @@ import './homeButton.css'
 export const HomeButton = () => {
 
     return (
-        <Link to="/" className="home-button" aria-label="Home button">
+        <Link to="/public-info-ui" className="home-button" aria-label="Home button">
            <i className="fas fa-home"></i>
         </Link>
     );

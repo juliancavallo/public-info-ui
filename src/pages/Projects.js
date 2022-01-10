@@ -89,6 +89,7 @@ export default function Projects() {
 
   const closeToast = () => {
     document.querySelector('body').style['overflow'] = '';
+    document.querySelector('table').children[1].lastChild.style.visibility = 'collapse';
     setShow(false);
   }
 

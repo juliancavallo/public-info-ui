@@ -10,12 +10,13 @@ export const Table = ({items, showToastInfo, toast}) => {
                     items.map((item, index) => (
                         <TableRow key={index} item={item.header} showToastInfo={showToastInfo} toastItem={item}/>
                         ))
-                    }            
+                    }        
+                    <tr style={{visibility:'collapse'}}>
+                        <td>
+                            {toast}
+                        </td>
+                    </tr>
             </tbody>
-
-            <React.Fragment>
-                {toast}
-            </React.Fragment>
         </>
     );
 }
