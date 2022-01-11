@@ -18,13 +18,15 @@ export default function Projects() {
   const [loading, setLoading] = useState(false);
   const [size, setSize] = useState(10);
   const [page, setPage] = useState(1);
+  const [sord, setSord] = useState('asc');
+  const [sidx, setSidx] = useState('');
   const [pagedDataChanged, setPagedDataChanged] = useState(false);
 
   const columns = [
-    {value: "Proyecto", width: '40%'}, 
-    {value: "Monto total", width: '20%'}, 
-    {value: "Provincia", width: '20%'}, 
-    {value: "Localidad", width: '20%'},
+    {key: "project", value: "Proyecto", width: '40%'}, 
+    {key: "totalAmount", value: "Monto total", width: '20%'}, 
+    {key: "province", value: "Provincia", width: '20%'}, 
+    {key: "department", value: "Localidad", width: '20%'},
   ]
 
   let provinceInput = React.createRef();
@@ -45,7 +47,7 @@ export default function Projects() {
   };
   
   useEffect(async () => {
-    const filters = {'size': size}
+    const filters = {'size': size, 'sidx': 'province', 'sord': 'asc'}
     loadProjects(filters);
   }, []);
 
@@ -55,6 +57,11 @@ export default function Projects() {
       setPagedDataChanged(false);
     }
   }, [pagedDataChanged]);
+
+  useEffect(() => {
+    if(sidx)
+      loadProjects(getFilters());
+  }, [sidx, sord])
 
 
   const getFilters = () => { 
@@ -66,6 +73,8 @@ export default function Projects() {
 
     filters.size = size;
     filters.page = page - 1;
+    filters.sidx = sidx ? sidx : 'province';
+    filters.sord = sord ? sord : 'asc';
 
     return filters;
   }
@@ -102,7 +111,17 @@ export default function Projects() {
     setPage(_page);
     setPagedDataChanged(true);
   }
-  
+
+  const onTableHeaderClick = (col) =>{
+    if(col == sidx){
+      setSord(sord == 'asc' ? 'desc' : 'asc');
+    } else {
+      setSord('asc');
+    }
+
+    setSidx(col);
+  }
+
   const ToastContent = <ProjectToastContent project={selectedItem}/>;
 
   return (
@@ -114,7 +133,7 @@ export default function Projects() {
       {loading ? <LoadingAnimation width={'50px'}/> : ''}
       <div className='table-wrapper'>
         <table>
-          <TableHeader columns={columns}/>
+          <TableHeader columns={columns} onTableHeaderClick={onTableHeaderClick} sidx={sidx} sord={sord}/>
           <Table 
             items={projects} 
             showToastInfo={showToastInfo} 

@@ -12,7 +12,7 @@ export const ProjectToastContent = ({project}) => {
                 <p><strong>Monto total: </strong>{project.header.totalAmount} ({project.detail.currencyType})</p>
                 <p><strong>Duración: </strong>{project.detail.duration} días</p>
                 <p><strong>Estado de la obra: </strong>{project.detail.status}</p>
-                <p><strong>Ubicación: </strong>{`${project.header.province} - ${project.header.deparment}`}</p>
+                <p><strong>Ubicación: </strong>{`${project.header.province} - ${project.header.department}`}</p>
                 <p><strong>Más información: </strong><a href={project.detail.projectUrl} target='blank'>Sitio oficial del Gobierno de la Nación</a></p>
             </React.Fragment> : ''}
             

@@ -27,24 +27,23 @@ th, td{
   border-left: 1px solid var(--cell-border);
   border-bottom: 1px solid var(--cell-border);
   padding: 10px;
+  transition: all 0.4s ease-out;
 }
 
 th {
   background-color: var(--font-light);
   color: var(--primary);
 }
-  
-td {
-  transition: all 0.4s ease-out;
-  padding: 10px;
+
+th > i{
+  margin-left: 10px;
 }
 
 tr:hover{
-
   cursor: pointer;
 }
 
-tr:hover > td {
+tr:hover > td, th:hover {
   background-color: var(--primary);
   color: var(--font-light);
 }
