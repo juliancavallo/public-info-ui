@@ -23,10 +23,10 @@ export default function Salaries() {
   const [pagedDataChanged, setPagedDataChanged] = useState(false);
 
   const columns = [
+    {key: "name", value: "Nombre", width: '30%'},
+    {key: "section", value: "Sector", width: '30%'}, 
     {key: "year", value: "Año", width: '8%'}, 
     {key: "month", value: "Mes", width: '14%'}, 
-    {key: "section", value: "Sector", width: '30%'}, 
-    {key: "fullName", value: "Nombre", width: '30%'},
     {key: "monthlyWage", value: "Sueldo mensual", width: '18%'},
   ]
 
