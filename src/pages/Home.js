@@ -14,7 +14,7 @@ export default function Home() {
             <h3>Obras Públicas</h3>
             <img src={ProjectThumbnail} alt="Obras públicas"></img>
           </Link>
-          <Link to="/salary" className="page">
+          <Link to="/salaries" className="page">
             <h3>Salarios</h3>
             <img src={WagesThumbnail} alt="Salarios de autoridades"></img>
           </Link>

@@ -1,18 +1,18 @@
 import React, {useEffect, useState } from 'react';
 import {Table} from '../components/Table/table'
 import {Toast} from '../components/Toast/toast';
-import {SearchFilters} from '../components/SearchFilter/projectSearchFilters';
+import {SearchFilters} from '../components/SearchFilter/salarySearchFilters';
 import {LoadingAnimation} from '../components/Animation/loading';
-import {getProjects} from '../libs/api';
-import {ProjectToastContent} from '../components/Project/toastContent';
+import {getSalaries} from '../libs/api';
+import {SalaryToastContent} from '../components/Salary/toastContent';
 import {HomeButton} from '../components/HomeButton/homeButton'
 import {TableFooter} from '../components/Table/tableFooter'
 import {TableHeader} from '../components/Table/tableHeader'
 
 
-export default function Projects() {
+export default function Salaries() {
   const [totalPages, setTotalPages] = useState(0);
-  const [projects, setProjects] = useState([]);
+  const [salaries, setSalaries] = useState([]);
   const [show, setShow] = useState(false);
   const [selectedItem, setSelectedItem] = useState({});
   const [loading, setLoading] = useState(false);
@@ -23,44 +23,47 @@ export default function Projects() {
   const [pagedDataChanged, setPagedDataChanged] = useState(false);
 
   const columns = [
-    {key: "project", value: "Proyecto", width: '40%'}, 
-    {key: "totalAmount", value: "Monto total", width: '20%'}, 
-    {key: "province", value: "Provincia", width: '20%'}, 
-    {key: "department", value: "Localidad", width: '20%'},
+    {key: "year", value: "Año", width: '8%'}, 
+    {key: "month", value: "Mes", width: '14%'}, 
+    {key: "section", value: "Sector", width: '30%'}, 
+    {key: "fullName", value: "Nombre", width: '30%'},
+    {key: "monthlyWage", value: "Sueldo mensual", width: '18%'},
   ]
 
-  let provinceInput = React.createRef();
-  let departmentInput = React.createRef();
-  let fromDateInput = React.createRef();
-  let toDateInput = React.createRef();
-  let totalAmountMinInput = React.createRef();
-  let totalAmountMaxInput = React.createRef();
-  let descriptionInput = React.createRef();
+  let yearInput = React.createRef();
+  let monthInput = React.createRef();
+  let lastNameInput = React.createRef();
+  let firstNameInput = React.createRef();
+  let sectionInput = React.createRef();
+  let positionInput = React.createRef();
+  let minMonthlyWageInput = React.createRef();
+  let maxMonthlyWageInput = React.createRef();
   const refs = {
-    'province': provinceInput, 
-    'department': departmentInput, 
-    'fromDate': fromDateInput, 
-    'toDate': toDateInput, 
-    'totalAmountMin': totalAmountMinInput, 
-    'totalAmountMax': totalAmountMaxInput,
-    'description': descriptionInput
+    'year': yearInput,
+    'monthNum': monthInput,
+    'lastName': lastNameInput,
+    'firstName': firstNameInput,
+    'section': sectionInput,
+    'position': positionInput,
+    'minMonthlyWage': minMonthlyWageInput,
+    'maxMonthlyWage': maxMonthlyWageInput,
   };
   
   useEffect(async () => {
-    const filters = {'size': size, 'sidx': 'province', 'sord': 'asc'}
-    await loadProjects(filters);
+    const filters = {'size': size, 'sidx': 'year', 'sord': 'asc'}
+    await loadSalaries(filters);
   }, []);
 
   useEffect(async () => {
     if(pagedDataChanged){
-      await loadProjects(getFilters());
+      await loadSalaries(getFilters());
       setPagedDataChanged(false);
     }
   }, [pagedDataChanged]);
 
   useEffect(async () => {
     if(sidx)
-    await loadProjects(getFilters());
+    await loadSalaries(getFilters());
   }, [sidx, sord])
 
 
@@ -73,19 +76,19 @@ export default function Projects() {
 
     filters.size = size;
     filters.page = page - 1;
-    filters.sidx = sidx ? sidx : 'province';
+    filters.sidx = sidx ? sidx : 'year';
     filters.sord = sord ? sord : 'asc';
 
     return filters;
   }
 
-  const loadProjects = async (filters) => {
+  const loadSalaries = async (filters) => {
     setLoading(true);
-    const response = await getProjects(filters);
+    const response = await getSalaries(filters);
     setLoading(false);
 
     if(response.success) {
-      setProjects(response.data.items);
+      setSalaries(response.data.items);
       setTotalPages(response.data.pages)
 
       document.querySelector('body').scrollIntoView({block: 'end', behavior: 'smooth'});
@@ -93,6 +96,7 @@ export default function Projects() {
       alert(response.message);
     }
   }
+
 
   const showToastInfo = (item) => {
     document.querySelector('body').style['overflow'] = 'hidden';
@@ -107,7 +111,7 @@ export default function Projects() {
   }
 
   const onSearchClick = async () => {
-    loadProjects(getFilters());
+    loadSalaries(getFilters());
   }
 
   const onPagedDataChange = (_size, _page) => {
@@ -117,8 +121,8 @@ export default function Projects() {
   }
 
   const onTableHeaderClick = (col) =>{
-    if(col === sidx){
-      setSord(sord === 'asc' ? 'desc' : 'asc');
+    if(col == sidx){
+      setSord(sord == 'asc' ? 'desc' : 'asc');
     } else {
       setSord('asc');
     }
@@ -126,7 +130,7 @@ export default function Projects() {
     setSidx(col);
   }
 
-  const ToastContent = <ProjectToastContent project={selectedItem}/>;
+  const ToastContent = <SalaryToastContent salary={selectedItem}/>;
 
   return (
     <main>
@@ -139,13 +143,13 @@ export default function Projects() {
         <table>
           <TableHeader columns={columns} onTableHeaderClick={onTableHeaderClick} sidx={sidx} sord={sord}/>
           <Table 
-            items={projects} 
+            items={salaries} 
             showToastInfo={showToastInfo} 
             toast={
               <Toast 
                 show={show} 
                 closeToast={closeToast} 
-                title={selectedItem?.header?.projectName} 
+                title={selectedItem?.header?.fullName} 
                 content={ToastContent}/>}
             />
         </table>
