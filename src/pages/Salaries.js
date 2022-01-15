@@ -75,7 +75,7 @@ export default function Salaries() {
     });
 
     filters.size = size;
-    filters.page = page - 1;
+    filters.page = page;
     filters.sidx = sidx ? sidx : 'year';
     filters.sord = sord ? sord : 'asc';
 
@@ -89,8 +89,11 @@ export default function Salaries() {
 
     if(response.success) {
       setSalaries(response.data.items);
-      setTotalPages(response.data.pages)
+      setTotalPages(response.data.pages);
+      if(page > response.data.pages)
+        setPage(response.data.pages);
 
+      document.getElementById('pageCounter').value = Math.min(page, response.data.pages);
       document.querySelector('body').scrollIntoView({block: 'end', behavior: 'smooth'});
     } else{
       alert(response.message);
@@ -134,7 +137,7 @@ export default function Salaries() {
 
   return (
     <main>
-      <h1>Obras Públicas</h1>
+      <h1>Salarios de autoridades</h1>
       <HomeButton/>
       <SearchFilters refs={refs} onSearchClick={onSearchClick} />
       

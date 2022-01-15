@@ -95,4 +95,8 @@ tr:hover > td, th:hover {
   td:not(:first-child){
     display: none;
   }
+
+  .table-footer > .page-button{
+    display: none;
+  }
 }

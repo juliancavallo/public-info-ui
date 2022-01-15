@@ -15,7 +15,7 @@ export default function Home() {
             <img src={ProjectThumbnail} alt="Obras públicas"></img>
           </Link>
           <Link to="/salaries" className="page">
-            <h3>Salarios</h3>
+            <h3>Salarios (2021)</h3>
             <img src={WagesThumbnail} alt="Salarios de autoridades"></img>
           </Link>
       </div>
