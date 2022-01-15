@@ -88,9 +88,9 @@ export default function Projects() {
       setProjects(response.data.items);
       setTotalPages(response.data.pages);
       if(page > response.data.pages)
-        setPage(response.data.pages);
+        setPage(Math.max(response.data.pages, 1));
 
-      document.getElementById('pageCounter').value = Math.min(page, response.data.pages);
+      document.getElementById('pageCounter').value = Math.max(Math.min(page, response.data.pages), 1);
       document.querySelector('body').scrollIntoView({block: 'end', behavior: 'smooth'});
     } else{
       alert(response.message);

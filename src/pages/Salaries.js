@@ -30,7 +30,6 @@ export default function Salaries() {
     {key: "monthlyWage", value: "Sueldo mensual", width: '18%'},
   ]
 
-  let yearInput = React.createRef();
   let monthInput = React.createRef();
   let lastNameInput = React.createRef();
   let firstNameInput = React.createRef();
@@ -39,7 +38,6 @@ export default function Salaries() {
   let minMonthlyWageInput = React.createRef();
   let maxMonthlyWageInput = React.createRef();
   const refs = {
-    'year': yearInput,
     'monthNum': monthInput,
     'lastName': lastNameInput,
     'firstName': firstNameInput,
@@ -93,7 +91,7 @@ export default function Salaries() {
       if(page > response.data.pages)
         setPage(response.data.pages);
 
-      document.getElementById('pageCounter').value = Math.min(page, response.data.pages);
+      document.getElementById('pageCounter').value = Math.max(Math.min(page, response.data.pages), 1);
       document.querySelector('body').scrollIntoView({block: 'end', behavior: 'smooth'});
     } else{
       alert(response.message);

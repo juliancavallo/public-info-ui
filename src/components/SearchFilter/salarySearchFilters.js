@@ -23,15 +23,11 @@ export const SearchFilters = ({onSearchClick, refs}) => {
                 <div style={row}>
                     <div className="filter">
                         <label htmlFor="lastName">Apellido:</label>
-                        <input ref={refs.lastName} type="text" id="lastName" name="lastName"></input>
+                        <input ref={refs.lastName} type="text" id="lastName" name="lastName" placeholder='ej. Fernandez'></input>
                     </div>
                     <div className="filter">
                         <label htmlFor="firstName">Nombre:</label>
-                        <input ref={refs.firstName} type="text" id="firstName" name="firstName"></input>
-                    </div>
-                    <div className="filter">
-                        <label htmlFor="year">Año:</label>
-                        <input ref={refs.year} type="number" id="year" name="year"></input>
+                        <input ref={refs.firstName} type="text" id="firstName" name="firstName" placeholder='ej. Alberto'></input>
                     </div>
                     <div className="filter">
                         <label htmlFor="monthNum">Mes:</label>
@@ -56,19 +52,19 @@ export const SearchFilters = ({onSearchClick, refs}) => {
                 <div style={row}>
                     <div className="filter">
                         <label htmlFor="section">Sector:</label>
-                        <input ref={refs.section} type="text" id="section" name="section"></input>
+                        <input ref={refs.section} type="text" id="section" name="section" placeholder='ej. Deporte'></input>
                     </div>
                     <div className="filter">
                         <label htmlFor="position">Cargo:</label>
-                        <input ref={refs.position} type="text" id="position" name="position"></input>
+                        <input ref={refs.position} type="text" id="position" name="position" placeholder='ej. Ministro'></input>
                     </div>
                     <div className="filter">
                         <label htmlFor="minMonthlyWage">Salario mínimo:</label>
-                        <input ref={refs.minMonthlyWage} type="text" id="minMonthlyWage" name="minMonthlyWage"></input>
+                        <input ref={refs.minMonthlyWage} type="number" id="minMonthlyWage" name="minMonthlyWage" placeholder='ej. 150000'></input>
                     </div>
                     <div className="filter">
                         <label htmlFor="maxMonthlyWage">Salario máximo:</label>
-                        <input ref={refs.maxMonthlyWage} type="text" id="maxMonthlyWage" name="maxMonthlyWage"></input>
+                        <input ref={refs.maxMonthlyWage} type="number" id="maxMonthlyWage" name="maxMonthlyWage" placeholder='ej. 450000'></input>
                     </div>
                 </div>
             </div>

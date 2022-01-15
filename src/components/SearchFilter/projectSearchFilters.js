@@ -19,12 +19,12 @@ export const SearchFilters = ({onSearchClick, refs}) => {
                 <div style={row}>
                     <div className="filter">
                         <label htmlFor="province">Provincia:</label>
-                        <input ref={refs.province} type="text" id="province" name="province"></input>
+                        <input ref={refs.province} type="text" id="province" name="province" placeholder='ej. Santa Fe'></input>
                     </div>
 
                     <div className="filter">
                         <label htmlFor="department">Localidad:</label>
-                        <input ref={refs.department} type="text" id="department" name="department"></input>
+                        <input ref={refs.department} type="text" id="department" name="department" placeholder='ej. Rosario'></input>
                     </div>
 
                     <div className="filter">
@@ -40,17 +40,17 @@ export const SearchFilters = ({onSearchClick, refs}) => {
                 <div style={row}>
                     <div className="filter">
                         <label htmlFor="totalAmountMin">Monto mínimo:</label>
-                        <input ref={refs.totalAmountMin} type="number" id="totalAmountMin" name="totalAmountMin"></input>
+                        <input ref={refs.totalAmountMin} type="number" id="totalAmountMin" name="totalAmountMin" placeholder='ej. 2750000'></input>
                     </div>
 
                     <div className="filter">
                         <label htmlFor="totalAmountMax">Monto máximo:</label>
-                        <input ref={refs.totalAmountMax} type="number" id="totalAmountMax" name="totalAmountMax"></input>
+                        <input ref={refs.totalAmountMax} type="number" id="totalAmountMax" name="totalAmountMax" placeholder='ej. 15250000'></input>
                     </div>
 
                     <div className="filter">
                         <label htmlFor="description">Descripción:</label>
-                        <input ref={refs.description} type="text" id="description" name="description"></input>
+                        <input ref={refs.description} type="text" id="description" name="description" placeholder='ej. Alumbrado'></input>
                     </div>
                 </div>
             </div>
