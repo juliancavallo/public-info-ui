@@ -22,13 +22,6 @@ export default function Projects() {
   const [sidx, setSidx] = useState('');
   const [pagedDataChanged, setPagedDataChanged] = useState(false);
 
-  const columns = [
-    {key: "project", value: "Proyecto", width: '40%'}, 
-    {key: "totalAmount", value: "Monto total", width: '20%'}, 
-    {key: "province", value: "Provincia", width: '20%'}, 
-    {key: "department", value: "Localidad", width: '20%'},
-  ]
-
   let provinceInput = React.createRef();
   let departmentInput = React.createRef();
   let fromDateInput = React.createRef();
@@ -140,7 +133,7 @@ export default function Projects() {
       {loading ? <LoadingAnimation/> : ''}
       <div className='table-wrapper'>
         <table>
-          <TableHeader columns={columns} onTableHeaderClick={onTableHeaderClick} sidx={sidx} sord={sord}/>
+          <TableHeader items={projects} onTableHeaderClick={onTableHeaderClick} sidx={sidx} sord={sord}/>
           <Table 
             items={projects} 
             showToastInfo={showToastInfo} 
